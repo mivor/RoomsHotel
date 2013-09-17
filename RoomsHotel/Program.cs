@@ -29,6 +29,19 @@ namespace RoomsHotel
 
             OdbcConnection DbConnection = new OdbcConnection(connectionString);
 
+            DbConnection.Open();
+
+            OdbcCommand DbCommand = DbConnection.CreateCommand();
+
+            DbCommand.CommandText = "SELECT * FROM REZ";
+
+            OdbcDataReader DbReader = DbCommand.ExecuteReader();
+
+            int fCount = DbReader.FieldCount;
+            string fName = DbReader.GetName(4);
+
+            string output = fCount + ":" + fName;
+
             // Visual part
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
