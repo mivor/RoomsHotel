@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.Odbc;
 using System.Diagnostics;
+using System.IO;
 
 namespace RoomsHotel
 {
@@ -23,9 +24,11 @@ namespace RoomsHotel
 
             isRunning = app != default(Process);
 
-            string connectionString = @"Driver={{Microsoft Paradox Driver (*.db )}};DriverID=538;
-                   Fil=Paradox 7.X;DefaultDir=C:\\DB;Dbq=C:\\DB;
-                   CollatingSequence=ASCII;";
+            string AppLocation = "C:\\mivor\\sources\\Gestbal Hotel";
+            string DbLocation = "C:\\mivor\\projects\\vstudio\\RoomsHotel\\DbSample\\DAT";
+
+            string connectionString = "Driver={Microsoft Paradox Driver (*.db )};DriverID=538;Fil=Paradox 5.X;";
+            connectionString += "DefaultDir=" + DbLocation + ";Dbq=" + DbLocation + ";CollatingSequence=ASCII;";
 
             OdbcConnection DbConnection = new OdbcConnection(connectionString);
 
@@ -51,3 +54,4 @@ namespace RoomsHotel
         }
     }
 }
+
