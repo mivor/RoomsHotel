@@ -45,6 +45,10 @@ namespace RoomsHotel
 
             string output = fCount + ":" + fName;
 
+            DbReader.Close();
+            DbCommand.Dispose();
+            DbConnection.Close();
+
             // Visual part
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
