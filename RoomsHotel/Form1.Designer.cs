@@ -37,20 +37,22 @@
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(106, 196);
+            this.label1.Location = new System.Drawing.Point(12, 215);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(46, 16);
+            this.label1.Size = new System.Drawing.Size(240, 90);
             this.label1.TabIndex = 0;
             this.label1.Text = "Output";
             // 
             // dataGridView1
             // 
+            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(258, 12);
+            this.dataGridView1.Location = new System.Drawing.Point(270, 0);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(622, 343);
+            this.dataGridView1.Size = new System.Drawing.Size(622, 367);
             this.dataGridView1.TabIndex = 1;
             // 
             // textBoxQuery
@@ -60,7 +62,6 @@
             this.textBoxQuery.Name = "textBoxQuery";
             this.textBoxQuery.Size = new System.Drawing.Size(237, 169);
             this.textBoxQuery.TabIndex = 2;
-            this.textBoxQuery.Text = "SELECT * FROM REZLIN\r\nWHERE";
             // 
             // button1
             // 
