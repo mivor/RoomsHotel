@@ -33,20 +33,43 @@ namespace RoomsHotel
 
             OdbcConnection DbConnection = new OdbcConnection(connectionString);
 
-            DbConnection.Open();
+            try
+            {
+                DbConnection.Open();
+            }
+            catch (OdbcException ex)
+            {
+                Console.WriteLine("connection to the Database failed.");
+                Console.WriteLine("The OdbcConnection returned the following message");
+                Console.WriteLine(ex.Message);
+                Console.ReadLine();
+                return;
+            }
+            
+            String query = "SELECT * FROM REZ WHERE DenClient_ = 'BARTA TUNDE'";
 
-            OdbcCommand DbCommand = DbConnection.CreateCommand();
+            OdbcCommand DbCommand = new OdbcCommand(query, DbConnection);
 
-            DbCommand.CommandText = "SELECT * FROM REZ";
+            DbCommand.CommandText = query;
 
-            OdbcDataReader DbReader = DbCommand.ExecuteReader();
+            try
+            {
+                OdbcDataReader DbReader = DbCommand.ExecuteReader();
+                int fCount = DbReader.FieldCount;
+                string fName = DbReader.GetName(4);
 
-            int fCount = DbReader.FieldCount;
-            string fName = DbReader.GetName(4);
+                string output = fCount + ":" + fName;
 
-            string output = fCount + ":" + fName;
-
-            DbReader.Close();
+                DbReader.Close();
+            }
+            catch (OdbcException ex)
+            {
+                Console.WriteLine("Executing the query '" + query + "' failed.");
+                Console.WriteLine("The OdbcCommand returned the following message");
+                Console.WriteLine(ex.Message);
+                return;
+            }
+            
             DbCommand.Dispose();
             DbConnection.Close();
 
