@@ -20,9 +20,10 @@ namespace RoomsHotel
 
             bool isRunning;
 
-            Process app = Process.GetProcessesByName("Hotel").FirstOrDefault();
-
-            isRunning = app != default(Process);
+            using ( Process app = Process.GetProcessesByName("Hotel").FirstOrDefault() )
+            {
+                isRunning = app != default(Process);
+            }
 
             string AppLocation = "C:\\mivor\\sources\\Gestbal Hotel";
             string DbLocation = "C:\\mivor\\projects\\vstudio\\RoomsHotel\\DbSample\\DAT";
