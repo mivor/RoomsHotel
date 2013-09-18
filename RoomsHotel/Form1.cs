@@ -63,18 +63,19 @@ namespace RoomsHotel
                 {
                     try
                     {
-                        using (OdbcDataReader DbReader = DbCommand.ExecuteReader())
+                        using (OdbcDataAdapter DbAdapter = new OdbcDataAdapter( DbCommand ) )
                         {
-                            int fCount = DbReader.FieldCount;
-                            string fName = DbReader.GetName(4);
-                            string output = fCount + ":" + fName;
+                            DataSet queryData = new DataSet();
+                            DbAdapter.Fill(queryData);
+
+                            dataGridView1.AutoGenerateColumns = true;
+                            dataGridView1.DataSource = queryData.Tables[0].DefaultView;
+                            textBoxQuery.Text = query;
                         }
                     }
                     catch (OdbcException ex)
                     {
-                        Console.WriteLine("Executing the query '" + query + "' failed.");
-                        Console.WriteLine("The OdbcCommand returned the following message");
-                        Console.WriteLine(ex.Message);
+                        label1.Text = ex.Message;
                         return;
                     }
                 }
