@@ -28,8 +28,18 @@ namespace RoomsHotel
             string AppLocation = "C:\\mivor\\sources\\Gestbal Hotel";
             string DbLocation = "C:\\mivor\\projects\\vstudio\\RoomsHotel\\DbSample\\DAT";
 
+            DateTime StartDate = new DateTime(2013, 08, 01);
+            DateTime EndDate = new DateTime(2013, 09, 01);
+            EndDate.AddDays(-1);
+
             String query = textBoxQuery.Text;
-                //"SELECT * FROM REZLIN WHERE CodRez_ BETWEEN 5198 AND 51205";
+            if (query.Length == 0)
+            {
+                query = "SELECT CodRez_, DenClient_, CodCam_, Denum_, NrPat_, REZLIN.D1_, REZLIN.D2_, Adulti_, REZLIN.TipTarif_ "; 
+                query += "FROM REZLIN, REZ, CAM WHERE (REZLIN.CodRez_ = REZ.Cod_) AND (REZLIN.CodCam_ = CAM.Cod_) ";
+                query += "AND ((CodCam_ BETWEEN 61 AND 70) OR (CodCam_ BETWEEN 106 AND 115))";
+                query += "AND (REZLIN.D1_ BETWEEN " + StartDate.ToOADate() + " AND " + EndDate.ToOADate() + ")";
+            }
 
             string connectionString = "Driver={Microsoft Paradox Driver (*.db )};DriverID=538;Fil=Paradox 5.X;";
             connectionString += "DefaultDir=" + DbLocation + ";Dbq=" + DbLocation + ";CollatingSequence=ASCII;";
