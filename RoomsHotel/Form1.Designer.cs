@@ -60,7 +60,7 @@
             this.textBoxQuery.Name = "textBoxQuery";
             this.textBoxQuery.Size = new System.Drawing.Size(237, 169);
             this.textBoxQuery.TabIndex = 2;
-            this.textBoxQuery.Text = "Enter query";
+            this.textBoxQuery.Text = "SELECT * FROM REZLIN\r\nWHERE";
             // 
             // button1
             // 
@@ -70,6 +70,7 @@
             this.button1.TabIndex = 3;
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Form1
             // 
